@@ -22,11 +22,9 @@ function* fetchAllMovies() {
         const movies = yield axios.get('/api/movie');
         console.log('get all:', movies.data);
         yield put({ type: 'SET_MOVIES', payload: movies.data });
-
     } catch {
         console.log('get all error');
     }
-        
 }
 
 // Create sagaMiddleware
@@ -46,6 +44,16 @@ const movies = (state = [], action) => {
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+// REDUCER for Clicked Movie ID
+const movieId = (state = 0, action) => {
+    switch (action.type) {
+        case 'SET_ID':
             return action.payload;
         default:
             return state;
