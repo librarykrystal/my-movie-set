@@ -27,7 +27,7 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
+            <h1>MOVIE LIST</h1>
             <section className="movies">
                 {movies.map(movie => {
                     return (
