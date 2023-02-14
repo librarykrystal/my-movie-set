@@ -33,9 +33,15 @@ function Details() {
 
     return(
         <>
-        <h1>DETAILS</h1>
-        <h3>for movie with ID of {movieId}</h3>
-        <div>{JSON.stringify(movie)}</div>
+        <h1>{movie[0].title}</h1>
+        {/* <h3>for movie with ID of {movieId}</h3> */}
+        {/* <div>{JSON.stringify(movie)}</div> */}
+        <div>
+            <img src={movie[0].poster}/>
+        </div>
+        <div>
+            <p>{movie[0].description}</p>
+        </div>
         <button onClick={goBack}>BACK TO MOVIE LIST</button>
         </>
     )
