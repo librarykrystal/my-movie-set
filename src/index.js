@@ -83,6 +83,16 @@ const movieDetails = (state = {}, action) => {
     }
 }
 
+// REDUCER for GENRES of Clicked Movie
+const movieGenres = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_GENRES':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
