@@ -11,36 +11,37 @@ function Details() {
     const movie = useSelector(store => store.movieDetails);
 
     // console.log('/details ID:', movieId);
-    // console.log('movieDetails REDUCER:', movie);
+    console.log('movieDetails REDUCER:', movie);
 
     // Fetching movie details upon page load:
     useEffect(() => {
         dispatch({ 
             type: 'FETCH_MOVIE_BY_ID',
-            payload: movieId});
+            payload: movieId
+        });
     }, []);
 
+
     // TO DO
-    // GET genres by ID
+    // GET genres
+
 
     const goBack = (event) => {
         event.preventDefault();
         history.push("/");
     }
 
-    // TO DO
-    // Dig into movie object to get each value on DOM (currently just stringified)
-
     return(
         <>
-        <h1>{movie[0].title}</h1>
+        {/* <h1>{movie[0].title}</h1> */}
+        {/* <h1>{movie.title}</h1> */}
         {/* <h3>for movie with ID of {movieId}</h3> */}
-        {/* <div>{JSON.stringify(movie)}</div> */}
+        <div>{JSON.stringify(movie)}</div>
         <div>
-            <img src={movie[0].poster}/>
+            {/* <img src={movie[0].poster}/> */}
         </div>
         <div>
-            <p>{movie[0].description}</p>
+            {/* <p>{movie[0].description}</p> */}
         </div>
         <button onClick={goBack}>BACK TO MOVIE LIST</button>
         </>

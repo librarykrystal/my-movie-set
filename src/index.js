@@ -43,7 +43,7 @@ function* fetchMovieDetails(action) {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-// Used to store movies returned from the server
+// REDUCER to store movies returned from the server
 const movies = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
@@ -53,7 +53,7 @@ const movies = (state = [], action) => {
     }
 }
 
-// Used to store the movie genres
+// REDUCER to store the movie genres
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
@@ -73,7 +73,7 @@ const movieId = (state = 0, action) => {
     }
 }
 
-// REDUCER for Clicked Movie results from database
+// REDUCER for Clicked Movie details from database
 const movieDetails = (state = {}, action) => {
     switch (action.type) {
         case 'SET_DETAILS':

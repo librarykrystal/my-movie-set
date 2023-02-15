@@ -17,16 +17,16 @@ router.get('/', (req, res) => {
 
 // to GET a specific movie's data by ID
 router.get('/:id', (req, res) => {
-  console.log('Get by ID req.params.id:', req.params.id);
+  console.log('Get MOVIE by ID req.params.id:', req.params.id);
   let id = req.params.id;
   const queryText = `SELECT * FROM movies WHERE id = $1;`;
   pool.query(queryText, [id])
   .then((result) => {
-      console.log('GET by ID RESULTS:', result);
+      console.log('GET MOVIE by ID RESULTS:', result);
       res.send(result.rows);
   })
   .catch((error) => {
-      console.log('Get by ID ERROR:', error);
+      console.log('Get MOVIE by ID ERROR:', error);
       res.sendStatus(500);
   })
 });
