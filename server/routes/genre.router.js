@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
     })
 });
 
-
 // GET genres by specific movie_id
 router.get('/:id', (req, res) => {
   console.log('Get GENRES by ID req.params.id:', req.params.id);
@@ -25,7 +24,7 @@ router.get('/:id', (req, res) => {
   SELECT "movies"."title", "genres"."name" FROM "movies"
   JOIN "movies_genres" ON "movies_genres"."movie_id" = "movies"."id"
   JOIN "genres" ON "genres"."id" = "movies_genres"."genre_id"
-  WHERE "movies"."id" = '$1';
+  WHERE "movies"."id" = $1;
   `;
   pool.query(queryText, [id])
   .then((result) => {

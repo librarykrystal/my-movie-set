@@ -15,11 +15,11 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_MOVIE_BY_ID', fetchMovieDetails);
-    // yield takeEvery('SET_DETAILS', movieDetails);
+    yield takeEvery('FETCH_MOVIE_GENRES', fetchMovieGenres);
 }
 
+// SAGA to get ALL movies from database
 function* fetchAllMovies() {
-    // get all movies from the DB
     try {
         const movies = yield axios.get('/api/movie');
         console.log('get all:', movies.data);
@@ -29,19 +29,31 @@ function* fetchAllMovies() {
     }
 }
 
+// SAGA to get only the selected movie's data, using movie id passed in as payload
 function* fetchMovieDetails(action) {
-    // get only the selected movie data, by Id passed in as payload
     try {
         const movie = yield axios.get(`/api/movie/${action.payload}`);
-        console.log('get by ID success:', movie.data);
+        console.log('get MOVIE by ID success:', movie.data);
         yield put({ type: 'SET_DETAILS', payload: movie.data });
     } catch (error){
-        console.log('get by ID error:', error);
+        console.log('get MOVIE by ID error:', error);
+    }
+}
+
+// SAGA to get only the selected movie's GENRES, using movie id passed in as payload
+function* fetchMovieGenres(action) {
+    try {
+        const movGenres = yield axios.get(`/api/genre/${action.payload}`);
+        console.log('get mGENRES by ID success:', movGenres.data);
+        yield put({ type: 'SET_GENRES', payload: movGenres.data });
+    } catch (error){
+        console.log('get mGENRES by ID error:', error);
     }
 }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
+
 
 // REDUCER to store movies returned from the server
 const movies = (state = [], action) => {
@@ -99,7 +111,8 @@ const storeInstance = createStore(
         movies,
         genres,
         movieId,
-        movieDetails
+        movieDetails,
+        movieGenres
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

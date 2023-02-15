@@ -9,21 +9,22 @@ function Details() {
     const history = useHistory();
     const movieId = useSelector(store => store.movieId);
     const movie = useSelector(store => store.movieDetails);
+    const movieGenres = useSelector(store => store.movieGenres);
 
     // console.log('/details ID:', movieId);
     console.log('movieDetails REDUCER:', movie);
 
-    // Fetching movie details upon page load:
+    // Fetching movie details and genres on page load:
     useEffect(() => {
         dispatch({ 
             type: 'FETCH_MOVIE_BY_ID',
             payload: movieId
         });
+        dispatch({ 
+            type: 'FETCH_MOVIE_GENRES',
+            payload: movieId
+        });
     }, []);
-
-
-    // TO DO
-    // GET genres
 
 
     const goBack = (event) => {
@@ -37,6 +38,8 @@ function Details() {
         {/* <h1>{movie.title}</h1> */}
         {/* <h3>for movie with ID of {movieId}</h3> */}
         <div>{JSON.stringify(movie)}</div>
+        <br/>
+        <div>{JSON.stringify(movieGenres)}</div>
         <div>
             {/* <img src={movie[0].poster}/> */}
         </div>
