@@ -22,10 +22,6 @@ function MovieList() {
             payload: movieId
           });
           console.log('MOVIE ID:', movieId);
-        // dispatch({ 
-        //     type: 'FETCH_MOVIE_BY_ID',
-        //     payload: movieId
-        // });
         // send user to /details
         history.push(`/details/${movieId}`);
     }

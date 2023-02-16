@@ -27,6 +27,15 @@ function Details() {
         });
     }, []);
 
+    const goBack = (event) => {
+        event.preventDefault();
+        // clear out movieDetails reducer
+        dispatch({ 
+            type: 'CLEAR_DETAILS'
+        });
+        history.push("/");
+    }
+
     return(
         <>
         {/* <h1>{movie[0].title}</h1> */}
@@ -35,12 +44,12 @@ function Details() {
         <br/>
         <p>GENRES: {JSON.stringify(movieGenres)}</p>
         <div>
-            <img src={movie[0].poster}/>
+            <img src={movie.poster}/>
         </div>
         <div>
             {/* <p>{movie[0].description}</p> */}
         </div>
-        <button onClick={() => history.push("/")}>BACK TO MOVIE LIST</button>
+        <button onClick={goBack}>BACK TO MOVIE LIST</button>
         </>
     )
 }

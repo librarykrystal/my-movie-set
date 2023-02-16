@@ -34,7 +34,8 @@ function* fetchMovieDetails(action) {
     try {
         const movie = yield axios.get(`/api/movie/${action.payload}`);
         console.log('get MOVIE by ID success:', movie.data);
-        yield put({ type: 'SET_DETAILS', payload: movie.data });   // SET_DETAILS
+        yield put({ type: 'SET_DETAILS', payload: movie.data[0] });
+        // ^ [0] to send along only the object (at index 0) within the payload array
     } catch (error){
         console.log('get MOVIE by ID error:', error);
     }
@@ -90,6 +91,9 @@ const movieDetails = (state = {}, action) => {
     switch (action.type) {
         case 'SET_DETAILS':
             return action.payload;
+        case 'CLEAR_DETAILS':
+            console.log('CLEARING DETAILS');
+            return {};
         default:
             return state;
     }

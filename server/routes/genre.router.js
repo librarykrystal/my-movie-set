@@ -38,15 +38,3 @@ router.get('/:id', (req, res) => {
 });
 
 module.exports = router;
-
-
-// SQL to get genres by movie ID!
-// Tested in Postico
-// will need to loop through result and plop the genre name each time as <li>
-
-// SELECT "movies"."title", "genres"."name" FROM "movies"
-// JOIN "movies_genres" ON "movies_genres"."movie_id" = "movies"."id"
-// JOIN "genres" ON "genres"."id" = "movies_genres"."genre_id"
-// WHERE "movies"."id" = '1';
-
-// need to use movie id (req.params.id) where 1 is in last line
