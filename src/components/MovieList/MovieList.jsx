@@ -8,7 +8,7 @@ function MovieList() {
     const dispatch = useDispatch();
     const history = useHistory();
     const movies = useSelector(store => store.movies);
-    // const movieId = useSelector(store => store.movieId);
+    const movieId = useSelector(store => store.movieId);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -27,7 +27,7 @@ function MovieList() {
         //     payload: movieId
         // });
         // send user to /details
-        history.push('/details');
+        history.push(`/details/${movieId}`);
     }
 
     return (

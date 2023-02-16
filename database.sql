@@ -55,15 +55,15 @@ VALUES
 -- starter genres
 INSERT INTO "genres" ("name")
 VALUES 
-('Adventure'),
-('Animated'),
-('Surrealist'),
-('Comedy'),
-('Horror'),
-('Drama'),
-('War'),
-('Fantasy'),
-('Musical'),
+('Adventure'),        --1
+('Animated'),         --2
+('Surrealist'),       --3
+('Comedy'),           --4
+('Horror'),           --5
+('Drama'),            --6
+('War'),              --7
+('Fantasy'),          --8
+('Musical'),          --9
 ('Romantic'),         --10
 ('Science Fiction'),  --11
 ('Space-Opera'),      --12

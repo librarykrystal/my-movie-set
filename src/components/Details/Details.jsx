@@ -1,15 +1,16 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function Details() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const movieId = useSelector(store => store.movieId);
+    // const movieId = useSelector(store => store.movieId);    // now using useParams id instead
     const movie = useSelector(store => store.movieDetails);
     const movieGenres = useSelector(store => store.movieGenres);
+    const { id } = useParams(); // id from URL route
 
     // console.log('/details ID:', movieId);
     console.log('movieDetails REDUCER:', movie);
@@ -18,35 +19,28 @@ function Details() {
     useEffect(() => {
         dispatch({ 
             type: 'FETCH_MOVIE_BY_ID',
-            payload: movieId
+            payload: id
         });
         dispatch({ 
             type: 'FETCH_MOVIE_GENRES',
-            payload: movieId
+            payload: id
         });
     }, []);
-
-
-    const goBack = (event) => {
-        event.preventDefault();
-        history.push("/");
-    }
 
     return(
         <>
         {/* <h1>{movie[0].title}</h1> */}
-        {/* <h1>{movie.title}</h1> */}
         {/* <h3>for movie with ID of {movieId}</h3> */}
-        <div>{JSON.stringify(movie)}</div>
+        <p>MOVIE: {JSON.stringify(movie)}</p>
         <br/>
-        <div>{JSON.stringify(movieGenres)}</div>
+        <p>GENRES: {JSON.stringify(movieGenres)}</p>
         <div>
-            {/* <img src={movie[0].poster}/> */}
+            <img src={movie[0].poster}/>
         </div>
         <div>
             {/* <p>{movie[0].description}</p> */}
         </div>
-        <button onClick={goBack}>BACK TO MOVIE LIST</button>
+        <button onClick={() => history.push("/")}>BACK TO MOVIE LIST</button>
         </>
     )
 }

@@ -34,7 +34,7 @@ function* fetchMovieDetails(action) {
     try {
         const movie = yield axios.get(`/api/movie/${action.payload}`);
         console.log('get MOVIE by ID success:', movie.data);
-        yield put({ type: 'SET_DETAILS', payload: movie.data });
+        yield put({ type: 'SET_DETAILS', payload: movie.data });   // SET_DETAILS
     } catch (error){
         console.log('get MOVIE by ID error:', error);
     }
