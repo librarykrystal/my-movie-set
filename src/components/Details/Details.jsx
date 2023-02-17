@@ -7,13 +7,14 @@ function Details() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    // const movieId = useSelector(store => store.movieId);    // now using useParams id instead
+    const movieId = useSelector(store => store.movieId);
     const movie = useSelector(store => store.movieDetails);
     const movieGenres = useSelector(store => store.movieGenres);
     const { id } = useParams(); // id from URL route
 
+    // TESTING
     // console.log('/details ID:', movieId);
-    console.log('movieDetails REDUCER:', movie);
+    // console.log('movieDetails REDUCER:', movie);
 
     // Fetching movie details and genres on page load:
     useEffect(() => {
@@ -29,7 +30,7 @@ function Details() {
 
     const goBack = (event) => {
         event.preventDefault();
-        // clear out movieDetails reducer
+        // clearing out movieDetails and movieGenres reducers:
         dispatch({ 
             type: 'CLEAR_DETAILS'
         });
@@ -38,18 +39,29 @@ function Details() {
 
     return(
         <>
-        {/* <h1>{movie[0].title}</h1> */}
-        {/* <h3>for movie with ID of {movieId}</h3> */}
-        <p>MOVIE: {JSON.stringify(movie)}</p>
-        <br/>
-        <p>GENRES: {JSON.stringify(movieGenres)}</p>
-        <div>
-            <img src={movie.poster}/>
-        </div>
-        <div>
-            {/* <p>{movie[0].description}</p> */}
-        </div>
-        <button onClick={goBack}>BACK TO MOVIE LIST</button>
+        {/* <h3>Movie ID TEST: {movieId}</h3> */}
+        {/* <p>MOVIE DATA TEST: {JSON.stringify(movie)}</p> */}
+        {/* <p>GENRES DATA TEST: {JSON.stringify(movieGenres)}</p> */}
+
+        {/* Conditional render to avoid rendering before reducer contents update: */}
+            { movieGenres.length > 0 &&
+                <>
+                    <h1>{movie.title}</h1>
+                    <div>
+                        <img src={movie.poster}/>
+                    </div>
+                    <div>
+                        <p>{movie.description}</p>
+                        <h3>Genres:</h3>
+                        {movieGenres.map(genre => {
+                            return(
+                                <p key={genre.name}> {genre.name} </p>
+                            );
+                        })}
+                    </div>
+                </>
+            }
+            <button onClick={goBack}>BACK TO MOVIE LIST</button>
         </>
     )
 }
