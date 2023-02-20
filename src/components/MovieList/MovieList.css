@@ -1,4 +1,27 @@
 .movies {
     display : flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    background-image: linear-gradient(#f2f2f2, gray);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.listMovie {
+    width: 220px;
+    margin: 10px;
+    background-image: linear-gradient(black, #4d4d4d);
+    color: white;
+}
+
+.poster {
+    margin-bottom: 10px;
+}
+
+.poster:hover {
+    box-shadow:0 0 20px #d9d9d9;
+}
+
+.movieTitle {
+    height: 50px;
 }

@@ -8,7 +8,7 @@ function MovieList() {
     const dispatch = useDispatch();
     const history = useHistory();
     const movies = useSelector(store => store.movies);
-    const movieId = useSelector(store => store.movieId);
+    // const movieId = useSelector(store => store.movieId);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -28,13 +28,15 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MOVIE LIST</h1>
+            {/* <h1>MOVIE LIST</h1> */}
             <section className="movies">
                 {movies.map(movie => {
                     return (
-                        <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title} onClick={() => goToDetails(movie.id)}/>
+                        <div className="listMovie" key={movie.id} >
+                            <div className="movieTitle">
+                                <h3>{movie.title}</h3>
+                            </div>
+                            <img className="poster" src={movie.poster} alt={movie.title} onClick={() => goToDetails(movie.id)}/>
                         </div>
                     );
                 })}
