@@ -3,17 +3,28 @@ import { useSelector, useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import './Details.css'
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import grey from '@mui/material/colors/grey';
+
+const theme = createTheme({
+    palette: {
+      primary: {
+        main: grey[300],
+      },
+    },
+  });
 
 function Details() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const movieId = useSelector(store => store.movieId);
+    // const movieId = useSelector(store => store.movieId);    // now using URL id
     const movie = useSelector(store => store.movieDetails);
     const movieGenres = useSelector(store => store.movieGenres);
     const { id } = useParams(); // id from URL route
 
-    // TESTING
+    // TESTS
     // console.log('/details ID:', movieId);
     // console.log('movieDetails REDUCER:', movie);
 
@@ -39,6 +50,7 @@ function Details() {
     }
 
     return(
+        <ThemeProvider theme={theme}>
         <div className="detailsBody">
         {/* <h3>Movie ID TEST: {movieId}</h3> */}
         {/* <p>MOVIE DATA TEST: {JSON.stringify(movie)}</p> */}
@@ -55,12 +67,15 @@ function Details() {
                         <p>{movie.description}</p>
                         <div className="genres">
 
+                            {/* Conditionally render singular/pluralized based upon number of genres: */}
                             { movieGenres.length == 1 &&
                                 <h3>Genre:</h3>
                             }
                             { movieGenres.length > 1 &&
                                 <h3>Genres:</h3>
                             }
+
+                            {/* Loop through genres and render each to DOM: */}
                             {movieGenres.map(genre => {
                                 return(
                                     <p key={genre.name}> {genre.name} </p>
@@ -70,8 +85,9 @@ function Details() {
                     </div>
                 </>
             }
-            <button onClick={goBack}>BACK TO MOVIE LIST</button>
+            <Button variant="contained" color="primary" onClick={goBack}>BACK TO MOVIE LIST</Button>
         </div>
+        </ThemeProvider>
     )
 }
 
