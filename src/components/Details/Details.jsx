@@ -54,7 +54,13 @@ function Details() {
                     <div>
                         <p>{movie.description}</p>
                         <div className="genres">
-                            <h3>Genres:</h3>
+
+                            { movieGenres.length == 1 &&
+                                <h3>Genre:</h3>
+                            }
+                            { movieGenres.length > 1 &&
+                                <h3>Genres:</h3>
+                            }
                             {movieGenres.map(genre => {
                                 return(
                                     <p key={genre.name}> {genre.name} </p>
