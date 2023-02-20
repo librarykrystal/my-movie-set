@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import './Details.css'
 
 function Details() {
 
@@ -38,7 +39,7 @@ function Details() {
     }
 
     return(
-        <>
+        <div className="detailsBody">
         {/* <h3>Movie ID TEST: {movieId}</h3> */}
         {/* <p>MOVIE DATA TEST: {JSON.stringify(movie)}</p> */}
         {/* <p>GENRES DATA TEST: {JSON.stringify(movieGenres)}</p> */}
@@ -52,17 +53,19 @@ function Details() {
                     </div>
                     <div>
                         <p>{movie.description}</p>
-                        <h3>Genres:</h3>
-                        {movieGenres.map(genre => {
-                            return(
-                                <p key={genre.name}> {genre.name} </p>
-                            );
-                        })}
+                        <div className="genres">
+                            <h3>Genres:</h3>
+                            {movieGenres.map(genre => {
+                                return(
+                                    <p key={genre.name}> {genre.name} </p>
+                                );
+                            })}
+                        </div>
                     </div>
                 </>
             }
             <button onClick={goBack}>BACK TO MOVIE LIST</button>
-        </>
+        </div>
     )
 }
 
