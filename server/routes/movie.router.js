@@ -57,13 +57,13 @@ router.post('/', (req, res) => {
         res.sendStatus(201);
       }).catch(err => {
         // catch for second query
-        console.log(err);
+        console.log('second query ERROR:', err);
         res.sendStatus(500)
       })
 
 // Catch for first query
   }).catch(err => {
-    console.log(err);
+    console.log('first query ERROR:', err);
     res.sendStatus(500)
   })
 })

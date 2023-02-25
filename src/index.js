@@ -16,6 +16,8 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_MOVIE_BY_ID', fetchMovieDetails);
     yield takeEvery('FETCH_MOVIE_GENRES', fetchMovieGenres);
+    yield takeEvery('FETCH_ALL_GENRES', fetchAllGenres);
+    yield takeEvery('ADD_MOVIE', addMovie);
 }
 
 // SAGA to get ALL movies from database
@@ -24,6 +26,17 @@ function* fetchAllMovies() {
         const movies = yield axios.get('/api/movie');
         console.log('get all:', movies.data);
         yield put({ type: 'SET_MOVIES', payload: movies.data });
+    } catch {
+        console.log('get all error');
+    }
+}
+
+// SAGA to get ALL genres from database
+function* fetchAllGenres() {
+    try {
+        const genres = yield axios.get('/api/genre');
+        console.log('get all GENRES:', genres.data);
+        yield put({ type: 'SET_ALL_GENRES', payload: genres.data });
     } catch {
         console.log('get all error');
     }
@@ -52,6 +65,20 @@ function* fetchMovieGenres(action) {
     }
 }
 
+// SAGA to ADD MOVIE
+function* addMovie(action) {
+    console.log('POST action:', action.payload);
+    try {
+        yield axios.post(`/api/movie`, action.payload);
+        console.log('ADD MOVIE SUCCESS data:', movie.data);
+        if (action.history){
+            action.history.push('/');
+        }
+    } catch (error){
+        console.log('ADD MOVIE ERROR:', error);
+    }
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -66,10 +93,10 @@ const movies = (state = [], action) => {
     }
 }
 
-// REDUCER to store the movie genres
+// REDUCER to store all movie genres
 const genres = (state = [], action) => {
     switch (action.type) {
-        case 'SET_GENRES':
+        case 'SET_ALL_GENRES':
             return action.payload;
         default:
             return state;
