@@ -46,7 +46,7 @@ function MovieList() {
         <ThemeProvider theme={theme}>
         <main>
             {/* <h1>MOVIE LIST</h1> */}
-            <Button variant="contained" color="primary" size="small" onClick={goAdd}>ADD A MOVIE</Button>
+            <Button className="addBtn" variant="contained" color="primary" size="small" onClick={goAdd}>ADD A MOVIE</Button>
             <section className="movies">
                 
                 {movies.map(movie => {

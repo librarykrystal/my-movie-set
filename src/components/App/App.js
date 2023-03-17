@@ -8,14 +8,14 @@ import Add from '../Add/Add';
 function App() {
   return (
     <div className="App">
-      <h1 className="header">THE MOVIES SAGA</h1>
+      <h1 className="header">MY MOVIE SET</h1>
 
       <Router>        
         <Route path="/" exact>
           <MovieList />
         </Route>
         
-        {/* Details page BASE MODE */}
+        {/* Details page BASE MODE - Upgraded version below */}
         {/* <Route path="/details" exact>
           <Details />
         </Route> */}
@@ -30,7 +30,7 @@ function App() {
           <Add />
         </Route>
 
-        {/* Edit page — re-use the add page for editing capability */}   
+        {/* Edit page — plan to re-use the add page for editing capability */}   
         {/* <Route path="/edit/:id" exact>
           <Add />
         </Route> */}

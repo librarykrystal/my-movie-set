@@ -49,12 +49,6 @@ function Details() {
         history.push("/");
     }
 
-    // For use if changing EDIT link to a Button:
-    // const goEdit = (event) => {
-    //     event.preventDefault();
-    //     history.push("/");
-    // }
-
     return(
         <ThemeProvider theme={theme}>
         <div className="detailsBody">
@@ -91,8 +85,6 @@ function Details() {
                     </div>
                 </>
             }
-            {/* <Button variant="contained" color="primary" onClick={goEdit}>EDIT</Button> */}
-            <Link to={`/edit/${movie.id}`}>EDIT</Link>
             <br/>
             <br/>
             <Button variant="contained" color="primary" onClick={goBack}>BACK TO MOVIE LIST</Button>
