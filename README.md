@@ -1,14 +1,14 @@
-# THE MOVIES SAGA
+# MY MOVIE SET
 
 ## Description
 
-Duration: 1-week sprint.
+Duration: weekend project.
 
-This app displays the titles and posters of movies contained in a database. When a movie's poster is clicked, the user is taken to a details page where they see not only the title and poster, but also a description and genre(s).
+This app displays the titles and posters of a set of movies contained in a database. When a movie's poster is clicked, the user is taken to a details page where they see not only the title and poster, but also a description and genre(s).
 
 ## Screenshots
 
-![Gallery](src/Screenshots/myMovieSet_list_sm.png)
+![Gallery](src/Screenshots/myMovieSet_home_sm.png)
 ![Details](src/Screenshots/myMovieSet_details_sm.png)
 
 # Prerequisites
@@ -28,10 +28,10 @@ Click any movie poster to be taken to a view of its details. On that page, a but
 
 ## Built With
 
-VSCode, JavaScript, HTML, CSS, React, Chrome, PostgreSQL, Postico
+VSCode, JavaScript, HTML, CSS, React, PostgreSQL, Postico
 
 ## Contributors
 Krystal Frost — [librarykrystal](https://github.com/librarykrystal)
 
 ## Acknowledgments
-Thanks to Prime Digital Academy, and to great filmmakers.
+Thanks to Prime Digital Academy, and to surrealist filmmakers.
