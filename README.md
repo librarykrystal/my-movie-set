@@ -4,7 +4,12 @@
 
 Duration: 1-week sprint.
 
-This app displays the titles and posters of movies contained in a database. When a movie's poster is clicked, the user is taken to a details page where they see not only the title and poster, but also a description and list of genres.
+This app displays the titles and posters of movies contained in a database. When a movie's poster is clicked, the user is taken to a details page where they see not only the title and poster, but also a description and genre(s).
+
+## Screenshots
+
+![Gallery](src/Screenshots/myMovieSet_list_sm.png)
+![Details](src/Screenshots/myMovieSet_details_sm.png)
 
 # Prerequisites
 
@@ -25,6 +30,8 @@ Click any movie poster to be taken to a view of its details. On that page, a but
 
 VSCode, JavaScript, HTML, CSS, React, Chrome, PostgreSQL, Postico
 
-## Acknowledgement
+## Contributors
+Krystal Frost — [librarykrystal](https://github.com/librarykrystal)
 
-Thanks to Prime Digital Academy for helping me make this app a reality.
+## Acknowledgments
+Thanks to Prime Digital Academy, and to great filmmakers.
